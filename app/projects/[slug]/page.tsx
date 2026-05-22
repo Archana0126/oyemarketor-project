@@ -116,8 +116,7 @@ export default async function ProjectDetailPage({
         </Link>
       </div>
 
-      <div className="relative w-full overflow-hidden mb-16" style={{ height: '600px' }}>
-        <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+<div className="relative overflow-hidden mb-16 mx-auto" style={{ height: '350px', maxWidth: '900px' }}>        <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
