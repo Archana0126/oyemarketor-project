@@ -7,42 +7,12 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
-  {
-    title: 'Visava',
-    location: 'Hingne Sinhgad Road',
-    status: 'Ongoing',
-    image: 'https://picsum.photos/seed/visava/800/600',
-  },
-  {
-    title: 'Yakshanagari',
-    location: 'Kothrud',
-    status: 'Completed',
-    image: 'https://picsum.photos/seed/yaksha/800/600',
-  },
-  {
-    title: 'Dewas Colony',
-    location: 'Dewas',
-    status: 'Completed',
-    image: 'https://picsum.photos/seed/dewas/800/600',
-  },
-  {
-    title: 'Riverside Elite',
-    location: 'Baner',
-    status: 'Ongoing',
-    image: 'https://picsum.photos/seed/riverside/800/600',
-  },
-  {
-    title: 'Sky Garden Towers',
-    location: 'Aundh',
-    status: 'Completed',
-    image: 'https://picsum.photos/seed/sky/800/600',
-  },
-  {
-    title: 'Urban Oasis',
-    location: 'Viman Nagar',
-    status: 'Proposed',
-    image: 'https://picsum.photos/seed/oasis/800/600',
-  },
+  { title: 'Podar School', location: 'Indore', status: 'Completed', image: '/images/Podar.png', slug: 'podar-school' },
+  { title: 'ST.Pauls School', location: 'Indore', status: 'Ongoing', image: '/images/Pauls.png', slug: 'st-pauls-school' },
+  { title: 'SICA School', location: 'Indore', status: 'Completed', image: '/images/SICA.png', slug: 'sica-school' },
+  { title: 'Gaurishankar', location: 'Hingne Sinhgad Road', status: 'Ongoing', image: '/images/Gaurishankar.png', slug: 'gaurishankar' },
+  { title: 'Yakshanagari', location: 'Kothrud', status: 'Completed', image: '/images/Yakshanagri.jpeg', slug: 'yakshanagari' },
+  { title: 'Dewas', location: 'ANAND VIHAR LAKE VIEW, DEWAS, INDORE', status: 'Proposed', image: 'https://picsum.photos/seed/oasis/800/600', slug: 'dewas' },
 ];
 
 export function Projects() {
@@ -74,40 +44,49 @@ export function Projects() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <Link key={project.title} href="/projects/detail">
+            <Link key={project.title} href={`/projects/${project.slug}`}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative h-[450px] overflow-hidden cursor-pointer rounded-lg border border-gray-200 bg-white hover:border-primary/50 hover:shadow-lg transition-all duration-500"
+                className="group relative h-[320px] overflow-hidden cursor-pointer rounded-lg border border-gray-200 hover:border-primary/50 hover:shadow-lg transition-all duration-500"
               >
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: `url(${project.image})` }}
-              />
-              <div className="absolute inset-0 bg-background/30 group-hover:bg-background/50 transition-all duration-500" />
-
-              <div className="absolute top-6 left-6 z-20">
-                <Badge className={cn(
-                  "rounded-lg px-4 py-1 text-[9px] font-bold uppercase tracking-widest border-none shadow-md",
-                  project.status === 'Ongoing' ? "bg-primary text-white" : project.status === 'Completed' ? "bg-blue-500 text-white" : "bg-gray-400 text-white"
-                )}>
-                  {project.status}
-                </Badge>
-              </div>
-
-              <div className="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-background via-background/60 to-transparent">
-                <div className="flex justify-between items-end">
-                  <div className="flex-1">
-                    <h4 className="text-2xl font-heading font-bold tracking-tight mb-2 text-foreground">{project.title}</h4>
-                    <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-4">{project.location}</p>
-                  </div>
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/90 transition-colors duration-300 ml-3">
-                    <ArrowUpRight className="w-6 h-6 text-white" />
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-500" />
+                <div className="absolute top-6 left-6 z-20">
+                  <Badge
+                    className={cn(
+                      'rounded-lg px-4 py-1 text-[9px] font-bold uppercase tracking-widest border-none shadow-md',
+                      project.status === 'Ongoing'
+                        ? 'bg-primary text-white'
+                        : project.status === 'Completed'
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-400 text-white'
+                    )}
+                  >
+                    {project.status}
+                  </Badge>
+                </div>
+                <div className="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="flex justify-between items-end">
+                    <div className="flex-1">
+                      <h4 className="text-2xl font-heading font-bold tracking-tight mb-2 text-white">
+                        {project.title}
+                      </h4>
+                      <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-4">
+                        {project.location}
+                      </p>
+                    </div>
+                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/90 transition-colors duration-300 ml-3">
+                      <ArrowUpRight className="w-6 h-6 text-white" />
+                    </div>
                   </div>
                 </div>
-              </div>
               </motion.div>
             </Link>
           ))}

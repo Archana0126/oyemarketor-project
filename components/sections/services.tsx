@@ -11,27 +11,28 @@ const services = [
     title: 'Residential Infrastructure',
     description: 'Bespoke living spaces designed for modern comfort and sustainable living.',
     icon: Home,
-    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?q=80&w=2070&auto=format&fit=crop',
   },
   {
     title: 'Commercial Infrastructure',
     description: 'State-of-the-art business hubs that foster innovation and productivity.',
     icon: Building,
-    image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?q=80&w=2070&auto=format&fit=crop',
   },
   {
     title: 'Institutional Infrastructure',
     description: 'Educational and public spaces built with a focus on community and growth.',
     icon: School,
-    image: 'https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=2070&auto=format&fit=crop',
   },
   {
     title: 'Planning & Development',
     description: 'Strategic urban planning and development for future-ready cities.',
     icon: Map,
-    image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?q=80&w=2070&auto=format&fit=crop'
   },
 ];
+
 
 export function Services() {
   return (
@@ -71,7 +72,7 @@ export function Services() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative h-[360px] overflow-hidden rounded-none border border-border"
+              className="group relative h-[420px] overflow-hidden rounded-none border border-border"
             >
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
