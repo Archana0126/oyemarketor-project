@@ -83,25 +83,28 @@ export function Testimonials() {
           {/* Left arrow */}
           <button
             onClick={prev}
-            className="flex-shrink-0 w-14 h-14 flex items-center justify-center text-primary hover:text-primary/70 transition-all duration-200"
+            className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 flex items-center justify-center text-primary hover:text-primary/70 transition-all duration-200"
           >
-            <ChevronLeft className="w-9 h-9" />
+            <ChevronLeft className="w-7 h-7 md:w-9 md:h-9" />
           </button>
 
           {/* Cards */}
-          <div className="flex-1 grid grid-cols-3 gap-6">
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-6">
             {indices.map((idx, position) => {
               const t = testimonials[idx];
               const isActive = position === 1;
+              const isSide = position !== 1;
               return (
                 <motion.div
                   key={idx}
                   animate={{
-                    opacity: isActive ? 1 : 0.75,   // ← was 0.4, now 0.75
+                    opacity: isActive ? 1 : 0.75,
                     scale: isActive ? 1 : 0.98,
                   }}
                   transition={{ duration: 0.4 }}
                   className={`p-8 flex flex-col gap-5 border min-h-[280px] transition-colors duration-300 ${
+                    isSide ? 'hidden md:flex' : 'flex'
+                  } ${
                     isActive
                       ? 'border-border bg-background shadow-sm'
                       : 'border-border/40 bg-transparent'
@@ -136,9 +139,9 @@ export function Testimonials() {
           {/* Right arrow */}
           <button
             onClick={next}
-            className="flex-shrink-0 w-14 h-14 flex items-center justify-center text-primary hover:text-primary/70 transition-all duration-200"
+            className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 flex items-center justify-center text-primary hover:text-primary/70 transition-all duration-200"
           >
-            <ChevronRight className="w-9 h-9" />
+            <ChevronRight className="w-7 h-7 md:w-9 md:h-9" />
           </button>
 
         </div>

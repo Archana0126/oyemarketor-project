@@ -3,7 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, MapPin, Phone, Mail } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
 
 export function Footer() {
   const [year, setYear] = React.useState<number | null>(null);
@@ -26,11 +26,11 @@ export function Footer() {
   ];
 
   const socials = [
-    { Icon: Facebook, href: '#' },
-    { Icon: Twitter, href: '#' },
-    { Icon: Instagram, href: '#' },
-    { Icon: Linkedin, href: '#' },
-    { Icon: Youtube, href: '#' },
+    { Icon: Facebook, href: 'https://www.facebook.com/oyemarketor' },
+    { Icon: Twitter, href: 'https://x.com/oyemarketor' },
+    { Icon: Instagram, href: 'https://www.instagram.com/oyemarketor/' },
+    { Icon: Linkedin, href: 'https://www.linkedin.com/company/oyemarketor/' },
+    { Icon: Youtube, href: 'https://www.youtube.com/channel/UCqYSHN_STdDNBrRqBvBheqw' },
   ];
 
   return (
@@ -45,13 +45,13 @@ export function Footer() {
             <Link href="/" className="inline-block mb-4 group">
               <div className="w-28 h-20 transition-all duration-500 group-hover:scale-105">
                 <Image
-                              src="/header.png"
-                              alt="VIBGYOR Logo"
-                              width={96}
-                              height={96}
-                              className="w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
-                              priority
-                            />
+                  src="/header.png"
+                  alt="VIBGYOR Logo"
+                  width={96}
+                  height={96}
+                  className="w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
+                  priority
+                />
               </div>
             </Link>
             <p className="text-[10px] uppercase tracking-[0.25em] text-white/40 font-bold mb-4">
@@ -123,6 +123,8 @@ export function Footer() {
             <a
               key={i}
               href={href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-9 h-9 border border-white/20 rounded-full flex items-center justify-center text-white/40 hover:border-primary hover:text-primary transition-all duration-300"
             >
               <Icon className="w-3.5 h-3.5" />
@@ -133,8 +135,19 @@ export function Footer() {
           <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30">Architecting the</span>
           <span className="text-[9px] font-black uppercase tracking-[0.3em] text-primary">Future</span>
         </div>
-        <p className="text-[9px] font-black uppercase tracking-[0.25em] text-white/20 text-center">
+        <p className="text-[9px] font-black uppercase tracking-[0.25em] text-white/60 text-center">
           © Copyright {year || 2026} · VIBGYOR Inframech · All rights reserved
+        </p>
+        <p className="text-[9px] font-black uppercase tracking-[0.25em] text-white/60 text-center">
+          Designed & Developed by{' '}
+          <a
+            href="https://www.oyemarketor.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 transition-colors duration-200"
+          >
+            Oyemarketor Pvt Ltd
+          </a>
         </p>
       </div>
 
