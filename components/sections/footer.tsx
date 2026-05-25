@@ -45,12 +45,13 @@ export function Footer() {
             <Link href="/" className="inline-block mb-4 group">
               <div className="w-28 h-20 transition-all duration-500 group-hover:scale-105">
                 <Image
-                  src="/logo.png"
-                  alt="VIBGYOR Logo"
-                  width={112}
-                  height={80}
-                  className="w-full h-full object-contain brightness-0 invert"
-                />
+                              src="/header.png"
+                              alt="VIBGYOR Logo"
+                              width={96}
+                              height={96}
+                              className="w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
+                              priority
+                            />
               </div>
             </Link>
             <p className="text-[10px] uppercase tracking-[0.25em] text-white/40 font-bold mb-4">
