@@ -384,21 +384,7 @@ export default async function ProjectDetailPage({
             </div>
           )}
 
-          {/* About */}
-          <div className="mt-12">
-            <h2 className="text-3xl font-heading font-black mb-6">About This Project</h2>
-            <p className="text-base text-muted-foreground leading-relaxed mb-4">
-              This project represents our commitment to delivering exceptional infrastructure and
-              residential solutions. With meticulous planning and expert execution, we've created
-              spaces that enhance quality of life.
-            </p>
-            <p className="text-base text-muted-foreground leading-relaxed">
-              The project showcases our dedication to innovation, sustainability, and customer
-              satisfaction. Every detail has been carefully designed to provide optimal living and
-              working environments.
-            </p>
-          </div>
-
+         
         </div>
       </div>
 
