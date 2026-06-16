@@ -34,7 +34,7 @@ export function Footer() {
   ];
 
   return (
-    <footer style={{ backgroundColor: '#1a1008' }} className="text-white">
+    <footer style={{ backgroundColor: '#2a1f10' }} className="text-white">
 
       {/* Main Grid */}
       <div className="container mx-auto px-10 pt-16 pb-10">
@@ -54,23 +54,23 @@ export function Footer() {
                 />
               </div>
             </Link>
-            <p className="text-[10px] uppercase tracking-[0.25em] text-white/40 font-bold mb-4">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-white font-bold mb-4">
               Solapur Company
             </p>
-            <p className="text-xs text-white/40 leading-relaxed">
+            <p className="text-xs text-white leading-relaxed">
               Three decades of engineering excellence, building spaces that define generations.
             </p>
           </div>
 
           {/* Col 1 */}
           <div>
-            <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-6 border-b border-white/10 pb-3">
+            <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-6 border-b border-white/20 pb-3">
               Company
             </h5>
             <ul className="space-y-4">
               {col1.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-[11px] text-white/50 hover:text-primary transition-colors duration-200 uppercase tracking-widest font-bold">
+                  <Link href={link.href} className="text-[11px] text-white hover:text-primary transition-colors duration-200 uppercase tracking-widest font-bold">
                     {link.label}
                   </Link>
                 </li>
@@ -80,13 +80,13 @@ export function Footer() {
 
           {/* Col 2 */}
           <div>
-            <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-6 border-b border-white/10 pb-3">
+            <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-6 border-b border-white/20 pb-3">
               Support
             </h5>
             <ul className="space-y-4">
               {col2.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-[11px] text-white/50 hover:text-primary transition-colors duration-200 uppercase tracking-widest font-bold">
+                  <Link href={link.href} className="text-[11px] text-white hover:text-primary transition-colors duration-200 uppercase tracking-widest font-bold">
                     {link.label}
                   </Link>
                 </li>
@@ -96,13 +96,13 @@ export function Footer() {
 
           {/* Col 3 */}
           <div>
-            <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-6 border-b border-white/10 pb-3">
+            <h5 className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-6 border-b border-white/20 pb-3">
               Legal
             </h5>
             <ul className="space-y-4">
               {col3.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-[11px] text-white/50 hover:text-primary transition-colors duration-200 uppercase tracking-widest font-bold">
+                  <Link href={link.href} className="text-[11px] text-white hover:text-primary transition-colors duration-200 uppercase tracking-widest font-bold">
                     {link.label}
                   </Link>
                 </li>
@@ -114,7 +114,7 @@ export function Footer() {
       </div>
 
       {/* Divider */}
-      <div className="border-t border-white/10" />
+      <div className="border-t border-white/20" />
 
       {/* Bottom */}
       <div className="container mx-auto px-10 py-8 flex flex-col items-center gap-5">
@@ -125,20 +125,20 @@ export function Footer() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 border border-white/20 rounded-full flex items-center justify-center text-white/40 hover:border-primary hover:text-primary transition-all duration-300"
+              className="w-9 h-9 border border-white/40 rounded-full flex items-center justify-center text-white hover:border-primary hover:text-primary transition-all duration-300"
             >
               <Icon className="w-3.5 h-3.5" />
             </a>
           ))}
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30">Architecting the</span>
-          <span className="text-[9px] font-black uppercase tracking-[0.3em] text-primary">Future</span>
+          <span className="text-[10px] font-semibold tracking-[0.1em] text-white">Architecting the</span>
+          <span className="text-[10px] font-semibold tracking-[0.1em] text-primary">Future</span>
         </div>
-        <p className="text-[9px] font-black uppercase tracking-[0.25em] text-white/60 text-center">
+        <p className="text-[10px] font-medium tracking-[0.05em] text-white text-center">
           © Copyright {year || 2026} · VIBGYOR Inframech · All rights reserved
         </p>
-        <p className="text-[9px] font-black uppercase tracking-[0.25em] text-white/60 text-center">
+        <p className="text-[10px] font-medium tracking-[0.05em] text-white text-center">
           Designed & Developed by{' '}
           <a
             href="https://www.oyemarketor.com/"

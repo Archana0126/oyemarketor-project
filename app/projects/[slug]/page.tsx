@@ -12,9 +12,6 @@ const projects = [
     location: 'Vijay Nagar, Indore, Madhya Pradesh',
     status: 'Completed',
     image: '/images/Podar.png',
-    area: 'N/A',
-    units: 'N/A',
-    startDate: 'N/A',
     description:
       'Podar International School is a well-established educational institution located in Vijay Nagar, Indore. Part of the Podar Education Network, it features a multi-story white building campus catering to students across multiple grades.',
     address:
@@ -37,9 +34,6 @@ const projects = [
     location: 'Indore, Madhya Pradesh',
     status: 'Ongoing',
     image: '/images/Pauls.png',
-    area: 'N/A',
-    units: 'N/A',
-    startDate: 'N/A',
     description:
       'St. Paul Institute of Professional Studies (SPIPS) is a prominent educational institution in Indore featuring a modern multi-story building with a distinctive curved architectural design in white and light blue colors. The campus is set in a green, well-landscaped environment with hills in the background.',
     address:
@@ -63,9 +57,6 @@ const projects = [
     location: 'Indore, Madhya Pradesh',
     status: 'Completed',
     image: '/images/SICA.png',
-    area: 'N/A',
-    units: 'N/A',
-    startDate: 'N/A',
     description:
       'SICA School is a distinctive educational institution in Indore featuring a red and cream colored multi-story building with a signature clock tower. The campus includes covered parking, a compound wall with fencing, and a spacious courtyard.',
     address:
@@ -89,9 +80,7 @@ const projects = [
     location: 'Kothrud, Pune, Maharashtra',
     status: 'Ongoing',
     image: '/images/Gaurishankar.png',
-    area: 'N/A',
     units: '8 Row Houses',
-    startDate: 'N/A',
     description:
       'Gaurishankar Visava is a premium residential project by Vardan Developers in Kothrud, Pune — "The Stylish, Selective, Symphonic" living experience. It features modern row house-style architecture with 4BHK units with lift and high-end finishes throughout.',
     address:
@@ -160,9 +149,7 @@ const projects = [
     location: 'Kothrud, Pune, Maharashtra',
     status: 'Completed',
     image: '/images/Yakshanagri.jpeg',
-    area: 'N/A',
     units: 'Shops, Offices & Flats',
-    startDate: 'N/A',
     description:
       'Yakshanagari CHS is a redevelopment project of a cooperative housing society in Kothrud, Pune, developed by VSA Infoline. It is a commercial-cum-residential multi-story building featuring shops, offices, and residential units with prices starting from ₹90 Lacs.',
     address: 'Yakshnagari, Near Kothrud Bus Stand, Kothrud, Pune, Maharashtra 411038',
@@ -190,9 +177,7 @@ const projects = [
     location: 'Near Meetha Talab, Dewas, Madhya Pradesh',
     status: 'Proposed',
     image: 'https://picsum.photos/seed/oasis/800/600',
-    area: 'N/A',
     units: '92 Units (Plots & Row Houses)',
-    startDate: 'N/A',
     description:
       'Anand Vihar Lake View is a residential colony project located near Meetha Talab (Sweet Lake) in Dewas, Madhya Pradesh, developed by Vardan Group. "Sapne Nahi, Hakikat Dikhate Hain Hum" — We show reality, not dreams. It offers plots and row houses with PMAY subsidy eligibility.',
     address: 'Near Meetha Talab, Vriddha Ashram ke pahle, Newri Road, Dewas, Madhya Pradesh',
@@ -256,6 +241,16 @@ export default async function ProjectDetailPage({
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
 
+  const p = project as any;
+
+  // Build stats array — only include items that have real data
+  const stats = [
+    p.area      && { label: 'Project Area', value: p.area },
+    p.units     && { label: 'Units',        value: p.units },
+    p.startDate && { label: 'Start Date',   value: p.startDate },
+    p.status    && { label: 'Status',       value: p.status },
+  ].filter(Boolean) as { label: string; value: string }[];
+
   return (
     <main className="bg-background">
       <Navbar />
@@ -294,28 +289,27 @@ export default async function ProjectDetailPage({
             </p>
           </div>
 
-          {/* Stats row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-b border-border">
-            {[
-              ['Project Area', project.area],
-              ['Units', project.units],
-              ['Start Date', project.startDate],
-              ['Status', project.status],
-            ].map(([label, value]) => (
-              <div key={label}>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-3">{label}</p>
-                <p className="text-2xl font-heading font-black">{value}</p>
-              </div>
-            ))}
-          </div>
+          {/* Stats row — only renders if at least one stat exists */}
+          {stats.length > 0 && (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-b border-border">
+              {stats.map(({ label, value }) => (
+                <div key={label}>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-3">{label}</p>
+                  <p className="text-2xl font-heading font-black">{value}</p>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Address */}
-          <div className="mt-10 py-8 border-b border-border">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-3">Address</p>
-            <p className="text-base text-muted-foreground leading-relaxed">{project.address}</p>
-          </div>
+          {project.address && (
+            <div className="mt-10 py-8 border-b border-border">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-3">Address</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{project.address}</p>
+            </div>
+          )}
 
-          {/* Project Details table (if available) */}
+          {/* Project Details */}
           {project.details && project.details.length > 0 && (
             <div className="mt-10 py-8 border-b border-border">
               <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-6">Project Details</h2>
@@ -330,11 +324,11 @@ export default async function ProjectDetailPage({
             </div>
           )}
 
-          {/* Features / Highlights (if available) */}
+          {/* Features */}
           {project.features && project.features.length > 0 && (
             <div className="mt-10 py-8 border-b border-border">
               <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-6">
-                {(project as any).amenities ? 'Colony Features' : 'Key Features'}
+                {p.amenities ? 'Colony Features' : 'Key Features'}
               </h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {project.features.map((f) => (
@@ -347,12 +341,12 @@ export default async function ProjectDetailPage({
             </div>
           )}
 
-          {/* Amenities sections for Gaurishankar */}
-          {(project as any).amenities && (
+          {/* Amenities */}
+          {p.amenities && (
             <div className="mt-10 py-8 border-b border-border">
               <h2 className="text-3xl font-heading font-black mb-8">Amenities</h2>
               <div className="space-y-8">
-                {Object.entries((project as any).amenities).map(([category, items]) => (
+                {Object.entries(p.amenities).map(([category, items]) => (
                   <div key={category}>
                     <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-3">{category}</h3>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -369,12 +363,12 @@ export default async function ProjectDetailPage({
             </div>
           )}
 
-          {/* Nearby Facilities for Dewas */}
-          {(project as any).nearby && (
+          {/* Nearby Facilities */}
+          {p.nearby && p.nearby.length > 0 && (
             <div className="mt-10 py-8 border-b border-border">
               <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-6">Nearby Facilities</h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {(project as any).nearby.map((item: string) => (
+                {p.nearby.map((item: string) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                     <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                     {item}
@@ -384,7 +378,6 @@ export default async function ProjectDetailPage({
             </div>
           )}
 
-         
         </div>
       </div>
 
